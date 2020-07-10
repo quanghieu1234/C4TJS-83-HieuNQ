@@ -3,6 +3,7 @@ const listItems = document.querySelectorAll("li");
 /**
  ** Convert NodeList of listItems to array
  **/
+
 const listElements = [...listItems];
 
 /**

@@ -8,10 +8,14 @@
    
 </head>
 <body>
-    <div id='search-box'>
-        <input type="text" id='search-input' placeholder='Search something'>
-        <ul id='search-list'>
-          <li class="app">Romantic</li>
+    
+    </div id="search-box">
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search here..." aria-label="Search" id="search-input">
+        <span class="fa fa-search"></span>
+        
+        <ul class="he" id='search-list'>
+          <li class="app"><a href="adad.com">Romantic</a></li>
           <li>Health and fitness</li>
           
           <li>Histoory</li>
@@ -19,7 +23,44 @@
           
           
         </ul>
-      </div>
-    <script src="index.js"></script>
+        <script>const searchInput = document.querySelector("#search-input");
+          const listItems = document.querySelectorAll("li");
+          /**
+           ** Convert NodeList of listItems to array
+           **/
+          
+          const listElements = [...listItems];
+          
+          /**
+           ** Define function for searching
+           **/
+          const search = function(event) {
+            const searchValue = this.value.toLowerCase();
+            listElements.forEach(listElement => {
+              const stringFound =
+                listElement.innerText.toLowerCase().indexOf(searchValue) !== -1;
+              if (stringFound) {
+                /**
+                 ** Make list item visible
+                 **/
+                listElement.style.display = "block";
+              } else {
+                /**
+                 ** Make list item invisible
+                 **/
+                listElement.style.display = "none";
+              }
+            });
+          };
+          
+          /**
+           ** Listen for input event on #search-input
+           ** and trigger search function.
+           **/
+          searchInput.addEventListener("input", search);
+          </script>
+    </form>
+</div>
+ 
 </body>
 </html>
